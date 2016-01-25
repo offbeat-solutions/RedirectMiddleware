@@ -18,7 +18,7 @@ namespace Offbeat.Middleware {
 			this.matchType = matchType;
 		}
 
-		public DomainMappingRule ThenMapTo(string domain) {
+		public DomainMappingRule ThenRedirectTo(string domain) {
 			if (Regex.IsMatch(domain, "^https?://") == false) {
 				destinationDomain = $"http://{domain}";
 			}
@@ -28,12 +28,12 @@ namespace Offbeat.Middleware {
 			return this;
 		}
 
-		public DomainMappingRule AsPermanentRedirect() {
+		public DomainMappingRule Permanently() {
 			this.permanentRedirect = true;
 			return this;
 		}
 
-		public DomainMappingRule AsTemporalRedirect() {
+		public DomainMappingRule Temporarly() {
 			this.permanentRedirect = false;
 			return this;
 		}

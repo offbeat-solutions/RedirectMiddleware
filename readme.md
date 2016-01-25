@@ -17,7 +17,7 @@ a new middleware as follows:
 
 ```
 app.UseRedirectMiddleware(opt => {
-	opt.IfDomainEquals("www.example.com").ThenMapTo("example.com").AsTemporalRedirect();
+	opt.IfDomainEquals("www.example.com").ThenRedirectTo("example.com").Temporarly();
 });
 ```
 
@@ -25,9 +25,9 @@ This will redirect all request for www.example.com to example.com.
 
 ```
 app.UseRedirectMiddleware(opt => {
-	opt.IfDomainEquals("www.example.com").ThenMapTo("example.com").AsTemporalRedirect();
-	opt.IfDomainEquals("www.old-example.com").ThenMapTo("example.com");
-	opt.IfDomainEquals("old-example.com").ThenMapTo("example.com");
+	opt.IfDomainEquals("www.example.com").ThenRedirectTo("example.com").Temporarly();
+	opt.IfDomainEquals("www.old-example.com").ThenRedirectTo("example.com");
+	opt.IfDomainEquals("old-example.com").ThenRedirectTo("example.com");
 });
 ```
 
@@ -48,5 +48,5 @@ Remember the domain names might also contain port numbers!
 
 Temporal vs permanent redirect
 ------------------------------
-By default your redirects will be permanent redirects, so the middleware will return 301. To make them 
-temporal redirects, use `AsTemporalRedirect()` like in the above example.
+By default your redirects will be permanent redirects, so the middleware will return 301. 
+To make them temporal redirects, use `Temporarly()` like in the above example.
