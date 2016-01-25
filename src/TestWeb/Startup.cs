@@ -23,6 +23,8 @@ namespace TestWeb
         {
             app.UseIISPlatformHandler();
 
+			// Note to testers: make sure localhost2 is available before redirecting there
+
 			app.UseRedirectMiddleware(opt => {
 				opt.IfDomainEquals("localhost:4277").ThenMapTo("localhost2:4277").AsTemporalRedirect();
 			});

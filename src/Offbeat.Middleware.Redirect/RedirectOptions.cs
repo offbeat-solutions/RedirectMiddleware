@@ -1,14 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using Microsoft.AspNet.Http;
 
-namespace Offbeat.Middleware
-{
-    public sealed class RedirectOptions
-    {
+namespace Offbeat.Middleware {
+	public sealed class RedirectOptions {
 		private IList<IRedirectRule> rules = new List<IRedirectRule>();
+
+		internal RedirectOptions() {
+		}
 
 		public DomainMappingRule IfDomainStartsWith(string source) {
 			var rule = new DomainMappingRule(source);
@@ -24,7 +22,7 @@ namespace Offbeat.Middleware
 
 		internal bool Evaluate(HttpContext httpContext) {
 			foreach (var rule in rules) {
-				if ( rule.Evaluate(httpContext)) {
+				if (rule.Evaluate(httpContext)) {
 					return true;
 				}
 			}

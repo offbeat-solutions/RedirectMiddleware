@@ -1,17 +1,14 @@
 ﻿{
 	"version": "1.0.0-*",
-	"description": "RedirectMiddleware Class Library",
+	"description": "Offbeat Redirection Middleware",
 	"authors": [ "lenard@offbeat.fi" ],
 	"tags": [ "" ],
 	"projectUrl": "http://github.com/offbeat-solutions/RedirectMiddleware",
 	"licenseUrl": "",
 
 	"dependencies": {
-		"Microsoft.AspNet.Diagnostics.Entity": "7.0.0-rc1-final",
 		"Microsoft.AspNet.IISPlatformHandler": "1.0.0-rc1-final",
-		"Microsoft.AspNet.Mvc": "6.0.0-rc1-final",
 		"Microsoft.AspNet.Server.Kestrel": "1.0.0-rc1-final",
-		"Microsoft.AspNet.StaticFiles": "1.0.0-rc1-final"
 	},
 
 	"frameworks": {

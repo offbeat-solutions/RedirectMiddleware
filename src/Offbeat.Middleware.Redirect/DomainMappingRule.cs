@@ -1,12 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNet.Http;
 using System.Text.RegularExpressions;
 
-namespace Offbeat.Middleware
-{
+namespace Offbeat.Middleware {
 	public class DomainMappingRule : IRedirectRule {
 		private string sourceDomain;
 
@@ -45,9 +41,17 @@ namespace Offbeat.Middleware
 		public bool Evaluate(HttpContext context) {
 			if (MatchDomain(context) &&
 				!context.Response.HasStarted) {
+
+				var destinationUri = new Uri(destinationDomain);
+				var originalpath = new Uri(context.Request.Path.Value, UriKind.Relative);
+				var destinationUriAndPath = new Uri(destinationUri, originalpath);
+
 				context.Response.Headers.Add("Location",
-					new Microsoft.Extensions.Primitives.StringValues(destinationDomain));
+					new Microsoft.Extensions.Primitives.StringValues(
+						destinationUriAndPath.ToString()));
+
 				context.Response.StatusCode = permanentRedirect ? 301 : 302;
+
 				return true;
 			}
 			return false;
