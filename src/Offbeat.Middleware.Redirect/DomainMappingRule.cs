@@ -28,12 +28,7 @@ namespace Offbeat.Middleware {
 			return this;
 		}
 
-		public DomainMappingRule Permanently() {
-			this.permanentRedirect = true;
-			return this;
-		}
-
-		public DomainMappingRule Temporarly() {
+		public DomainMappingRule Temporary() {
 			this.permanentRedirect = false;
 			return this;
 		}

@@ -8,13 +8,13 @@ namespace Offbeat.Middleware {
 		internal RedirectOptions() {
 		}
 
-		public DomainMappingRule IfDomainStartsWith(string source) {
+		public DomainMappingRule WhenAuthorityStartsWith(string source) {
 			var rule = new DomainMappingRule(source);
 			rules.Add(rule);
 			return rule;
 		}
 
-		public DomainMappingRule IfDomainEquals(string source) {
+		public DomainMappingRule WhenAuthorityIs(string source) {
 			var rule = new DomainMappingRule(source, DomainMatchType.Exact);
 			rules.Add(rule);
 			return rule;

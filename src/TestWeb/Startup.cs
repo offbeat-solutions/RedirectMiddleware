@@ -26,7 +26,7 @@ namespace TestWeb
 			// Note to testers: make sure localhost2 is available before redirecting there
 
 			app.UseRedirectMiddleware(opt => {
-				opt.IfDomainEquals("localhost:4277").ThenRedirectTo("localhost2:4277").Temporarly();
+				opt.WhenAuthorityIs("localhost:4277").ThenRedirectTo("localhost2:4277").Temporary();
 			});
 
             app.Run(async (context) =>
